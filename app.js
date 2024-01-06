@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 require("express-async-errors");
 const connectDB = require("./database/connect");
 const productsRouter = require("./routers/products");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 const notFoundMiddleware = require("./middleware/not-found");
 require("dotenv").config();
-
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
