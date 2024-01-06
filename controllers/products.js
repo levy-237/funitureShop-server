@@ -2,7 +2,7 @@ const Product = require("../models/products");
 
 //// PAGINATION HAVE TO BE COMPLETED !!!!!!!
 const getAllProducts = async (req, res) => {
-  const { featured, company, name, sort, numericFilters } = req.query;
+  const { featured, company, name, sort, numericFilters, limit } = req.query;
   ///Creating OBJECT where all the queries will be together
   const queryObject = {};
   /// checking queries
@@ -45,7 +45,7 @@ const getAllProducts = async (req, res) => {
     });
   }
 
-  let result = Product.find(queryObject);
+  let result = Product.find(queryObject).limit(limit);
   //// sorting products based on users need.by default by date of product creation.
   sort ? (result = result.sort(sort)) : (result = result.sort("createAt"));
   // limit ? result.limit(limit) : null;
