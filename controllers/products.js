@@ -13,10 +13,10 @@ const getAllProducts = async (req, res) => {
     // Creating a map to convert comparison operators to their MongoDB equivalents
     const operatorMap = {
       ">": "$gt",
-      "%3E": "$gte",
+      "<=": "$gte",
       "=": "$eq",
       "<": "$lt",
-      "%3C": "$lte",
+      ">=": "$lte",
     };
 
     // Defining a regular expression to match comparison operators in strings
